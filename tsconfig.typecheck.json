@@ -1,0 +1,12 @@
+{
+  "exclude": [
+    "node_modules",
+    "**/demo.*",
+    "**/demo/*.*",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.js",
+    "<outDir>"
+  ],
+  "extends": "./tsconfig.json"
+}
