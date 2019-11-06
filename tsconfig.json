@@ -3,12 +3,15 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    // Unused but squelches errors about overwriting files
     "outDir": "./tsDist",
     "downlevelIteration": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "lib": ["es2017", "dom", "esnext.array"],
+    "lib": [
+      "es2017",
+      "dom",
+      "esnext.array"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -16,7 +19,6 @@
     "noImplicitThis": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": { "src/*": ["src/*"] },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
@@ -25,9 +27,17 @@
     "strictPropertyInitialization": false,
     "experimentalDecorators": true,
     "target": "es5",
-    "typeRoots": ["node_modules/@types", "typings"]
+    "typeRoots": [
+      "node_modules/@types",
+      "typings"
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true
   },
-  "exclude": ["node_modules", "<outDir>"],
+  "exclude": [
+    "node_modules",
+    "<outDir>"
+  ],
   "include": [
     "./typings/*.ts",
     "./src/**/*.ts",

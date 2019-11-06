@@ -11,7 +11,7 @@ const Router: React.FC = () => {
       <Switch>
         <Route path='/' exact component={() => <section>Home</section>} />
         <Route path='/login' exact component={LoginPage} />
-        <Route path='/admin' exact component={AdminPage} />
+        <Route path='/admin' component={AdminPage} />
       </Switch>
     </Layout>
   );

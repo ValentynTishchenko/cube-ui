@@ -1,16 +1,26 @@
 import React from 'react';
+import { ModalsContextProvider } from '../contexts/ModalContext';
 
-type ModalManagerProps = {
-  shouldModalRender: boolean;
-}
+class ModalManager extends React.PureComponent {
+  state = {
+    registeredModals: []
+  };
 
-class ModalManager extends React.PureComponent<ModalManagerProps> {
+  registrate = () => {
+    console.log('registate');
+  };
 
   render() {
-    if (this.props.shouldModalRender){
-      return
-    }
-    return null;
+    const { children } = this.props;
+    const value = {
+      registrate: this.registrate,
+      ...this.state,
+    };
+    return (
+      <ModalsContextProvider value={value}>
+        {children}
+      </ModalsContextProvider>
+    );
   }
 }
 

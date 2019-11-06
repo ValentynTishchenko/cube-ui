@@ -1,39 +1,41 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
+
+import AdminHeader from './components/Header';
+import UserList from './components/UserPage';
+import { routeType } from './Admin.types';
 import { Page } from '../../components';
-import UsersTable from './components/UsersTable';
-import { UserTypes } from '../../constants/users';
-import { createTest } from './store/actions';
 
-type AdminPageProps = {
-  createTest: (ids) => void
-};
+class AdminPage extends React.PureComponent {
+  private readonly routes = [
+    {
+      exact: true,
+      path: '/admin/users',
+      component: UserList,
+    },
+    {
+      exact: true,
+      path: '/admin/tests',
+      component: UserList,
+    },
+  ];
 
-class AdminPage extends React.PureComponent<AdminPageProps> {
-  createTest = () => {
-    //TODO real ids;
-    this.props.createTest([1, 2, 3]);
-  };
+  renderRoute = (route:routeType, id) => (
+    <Route component={route.component} exact={route.exact} path={route.path} key={id} />
+  );
 
-  createUser = () => {
-
-  }
+  renderRoutes = () => this.routes.map(this.renderRoute);
 
   render() {
     return (
       <Page>
-        <button onClick={this.createTest}>create test</button>
-        <button onClick={this.createUser}>create user</button>
-        <UsersTable userType={UserTypes.TESTEE} />
+        <AdminHeader />
+        <Switch>
+          {this.renderRoutes()}
+        </Switch>
       </Page>
     );
   }
 }
 
-const mapStateToProps = () => ({});
-const mapDispatchToProps = dispatch => ({
-  createTest: (ids) => {
-    dispatch(createTest(ids));
-  }
-});
-export default connect(mapStateToProps, mapDispatchToProps)(AdminPage);
+export default AdminPage;

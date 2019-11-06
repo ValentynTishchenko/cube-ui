@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
 
 export const Page = styled.section`
+  margin:  0 auto;
   width: 100%;
-  height: 100% - 64px;
-  padding: 64px 0;
+  max-width: 1024px;
+  height: calc(100% - 64px);
+  padding: 0 96px;
   display: flex;
+  flex-direction: column;
 `;
