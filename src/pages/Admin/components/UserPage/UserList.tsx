@@ -2,7 +2,7 @@ import React from 'react';
 
 import { UserTypes } from 'src/constants/users';
 import UsersTable from './components/UsersTable';
-import { UserListContainer, UserListTitle, CreateUserButtonContainer } from './UserList.styles';
+import { UserListContainer, UserListTitle } from './UserList.styles';
 import { UserListProps } from './UserList.types';
 
 class UserList extends React.PureComponent<UserListProps> {
@@ -16,10 +16,10 @@ class UserList extends React.PureComponent<UserListProps> {
     return (
       <UserListContainer>
         <UserListTitle>
-          User List
-          <CreateUserButtonContainer onClick={this.onClick}>
-            <input type='button' value='+' />
-          </CreateUserButtonContainer>
+          Список користувачів
+          {/*<CreateUserButtonContainer onClick={this.onClick}>*/}
+            {/*<input type='button' value='+' />*/}
+          {/*</CreateUserButtonContainer>*/}
         </UserListTitle>
         <UsersTable userType={UserList.userType} />
       </UserListContainer>

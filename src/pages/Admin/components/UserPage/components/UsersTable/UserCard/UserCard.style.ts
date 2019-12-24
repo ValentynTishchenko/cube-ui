@@ -3,8 +3,8 @@ import { colors } from 'src/styles/variables';
 
 type UserStatusProps = {
   isOnline: boolean;
-}
-const UserCardContainerHeight = 40;
+};
+const UserCardContainerHeight = 80;
 
 export const UserCardContainer = styled.section`
   background: ${colors.white};
@@ -17,22 +17,40 @@ export const UserCardContainer = styled.section`
 `;
 
 export const UserStatus = styled.div<UserStatusProps>`
-  width: 8px;
+  width: 20px;
   min-height: ${UserCardContainerHeight}px;
   height: 100%;
-  background: ${({ isOnline }) => isOnline ? colors.mountainMeadowDark : colors.darkCoral};
+  background: ${({ isOnline }) =>
+    isOnline ? colors.mountainMeadowDark : colors.darkCoral};
 `;
 
 export const UserCardContent = styled.div`
   padding-left: 10px;
-  
-  .user-full-name{
-    margin: 10px 0 0 0;
+
+  .user-full-name {
+    font-size: 24px;
+    margin: 10px 0 5px 0;
     color: ${colors.mountainMeadowDark};
   }
 
-  .user-description{
-     margin: 0 0 10px 0;
-     color: ${colors.grey};
+  .user-description {
+    margin: 0 0 10px 0;
+    color: ${colors.grey};
+  }
+`;
+
+export const UserCardActions = styled.div`
+  float: right;
+  display: inline-block;
+
+  button {
+    height: 25px;
+    margin-left: 5px;
+    font-size: 18px;
+    font-weight: 600;
+
+    &:last-child {
+      margin-right: 10px;
+    }
   }
 `;

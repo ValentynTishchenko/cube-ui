@@ -6,6 +6,7 @@ import { AdminHeaderContainer } from './AdminHeader.style';
 type headerItemsType = {
   labelText: string;
   link: string;
+  isActive?: boolean;
 }
 
 type HeaderProps = RouteComponentProps & {};
@@ -13,26 +14,32 @@ type HeaderProps = RouteComponentProps & {};
 class AdminHeader extends React.PureComponent<HeaderProps> {
   private readonly headerItems: headerItemsType[] = [
     {
-      labelText: 'Users',
+      labelText: 'Користувачі',
       link: '/admin/users',
+      isActive: true,
     },
     {
-      labelText: 'Settings',
+      labelText: 'Тести',
+      link: '/admin/users',
+      isActive: false,
+    },
+    {
+      labelText: 'Налаштування',
       link: '/admin',
     },
     {
-      labelText: 'Statistic',
+      labelText: 'Статисика',
       link: '/admin',
     },
     {
-      labelText: 'Logout',
+      labelText: 'Вийти',
       link: '/admin',
     }
   ];
 
-  renderHeaderItem = () => this.headerItems.map(({ labelText, link }: headerItemsType, id) => (
+  renderHeaderItem = () => this.headerItems.map(({ isActive = false, labelText, link }: headerItemsType, id) => (
     <li key={id}>
-      <Link to={link}>
+      <Link className={isActive ? 'active' : ''} to={link}>
         {labelText}
       </Link>
     </li>

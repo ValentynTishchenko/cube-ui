@@ -5,7 +5,8 @@ export const Page = styled.section`
   width: 100%;
   max-width: 1024px;
   height: calc(100% - 64px);
-  padding: 0 96px;
+  //padding: 0 96px;
+  padding: 0 12px;
   display: flex;
   flex-direction: column;
 `;

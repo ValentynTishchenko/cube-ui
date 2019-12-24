@@ -1,10 +1,8 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-import AdminHeader from './components/Header';
 import UserList from './components/UserPage';
 import { routeType } from './Admin.types';
-import { Page } from '../../components';
 
 class AdminPage extends React.PureComponent {
   private readonly routes = [
@@ -20,21 +18,14 @@ class AdminPage extends React.PureComponent {
     },
   ];
 
-  renderRoute = (route:routeType, id) => (
+  renderRoute = (route: routeType, id) => (
     <Route component={route.component} exact={route.exact} path={route.path} key={id} />
   );
 
   renderRoutes = () => this.routes.map(this.renderRoute);
 
   render() {
-    return (
-      <Page>
-        <AdminHeader />
-        <Switch>
-          {this.renderRoutes()}
-        </Switch>
-      </Page>
-    );
+    return (<section>123</section>);
   }
 }
 

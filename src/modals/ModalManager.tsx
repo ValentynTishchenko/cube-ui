@@ -1,16 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 import { getModalsState } from './redux/selectors';
+import CreateUserModal from './components/CreateUserModal';
+import { MODALS_NAMES_LIST } from './constants';
 
-const TestWindow = styled.section`
-  background: black;
-  width: 100vw;
-  height: 100vh;
-`;
 
 const registratedModalWindows = {
-  kek: TestWindow
+  [MODALS_NAMES_LIST.CREATE_USER]: CreateUserModal
 };
 
 type ModalManagerProps = {
@@ -20,15 +17,15 @@ type ModalManagerProps = {
 
 class ModalManager extends React.PureComponent<ModalManagerProps> {
   render() {
-    console.log('ModalManager');
     const { isModalWindowOpen, openedModalWindowName } = this.props;
+    console.log('isModalWindowOpen: ', isModalWindowOpen);
     const Modal = registratedModalWindows[openedModalWindowName];
 
-    if (!isModalWindowOpen || !Modal) {
-      return null;
+    if (isModalWindowOpen && Modal) {
+      return <Modal />;
     }
-    console.log('ModalManager open');
-    return <Modal />;
+
+    return null;
   }
 }
 

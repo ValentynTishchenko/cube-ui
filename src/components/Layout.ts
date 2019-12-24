@@ -3,7 +3,8 @@ import {colors} from '../styles/variables'
 
 export const Layout = styled.section`
   background: ${colors.madison};
-  width: 100%;
+  margin: 0 auto;
+  width: 600px;
   height: 100vh;
   display: flex;
 `;

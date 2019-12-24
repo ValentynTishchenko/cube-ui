@@ -11,18 +11,17 @@ export const AdminHeaderContainer = styled.header`
     justify-content: flex-end;
   
     li {
-    padding: 0 5px;
+      padding: 0 5px;
       display: inline-block;
       list-style: none;
       
       a {
-        font-size: 18px;
+        font-size: 24px;
         text-decoration: none;
         color: ${colors.nepal};
-        
-        &:active {
+     
+        &.active {
           color: ${colors.white};
-          text-decoration: underline;
         }
         
         &:hover {

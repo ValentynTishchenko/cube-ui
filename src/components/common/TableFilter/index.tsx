@@ -33,6 +33,7 @@ class TableFilter extends React.PureComponent<TableFilterProps> {
   render() {
     return (
       <TableFilterContainer>
+        {this.props.children}
         {this.renderFilterOptions()}
       </TableFilterContainer>
     );

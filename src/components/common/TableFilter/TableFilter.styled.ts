@@ -9,6 +9,7 @@ export const TableFilterContainer = styled.ul`
   color: ${colors.nepal};
 
   li {
+    font-size: 20px;
     padding: 0 5px;
     display: inline-block;
     list-style: none;     

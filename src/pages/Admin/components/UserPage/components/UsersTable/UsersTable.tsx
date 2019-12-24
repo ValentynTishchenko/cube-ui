@@ -4,21 +4,25 @@ import { UserTypes } from 'src/constants/users';
 import TableFilter from 'src/components/common/TableFilter';
 import { filterOption } from 'src/components/common/TableFilter/TableFilter.types';
 import { UserModel } from 'src/models/User';
-import { UsersTableContainer } from './UserTable.style';
+import { UsersTableContainer, Actions } from './UserTable.style';
 import UserCard from './UserCard';
+import { connect } from 'react-redux';
+import { openModal } from 'src/modals/redux/actions';
+import { MODALS_NAMES_LIST } from 'src/modals/constants';
 
 type UsersTableProps = {
   isLoaded: boolean
   users: UserModel[],
   fetchUsers: (userType) => void
+  openModal: () => void
   userType?: UserTypes
 }
 
 class UsersTable extends React.PureComponent<UsersTableProps> {
   private readonly filterOptions: filterOption[] = [
-    { value: 'all', label: 'All', isActive: false },
-    { value: 'active', label: 'Active', isActive: true },
-    { value: 'notActive', label: 'Not active', isActive: false },
+    { value: 'all', label: 'Всі', isActive: true },
+    { value: 'active', label: 'Активні', isActive: false },
+    { value: 'notActive', label: 'Не Активні', isActive: false },
   ];
 
   componentDidMount(): void {
@@ -41,19 +45,37 @@ class UsersTable extends React.PureComponent<UsersTableProps> {
     );
   };
 
+  onClick = () => {
+    this.props.openModal();
+  };
+
   render() {
     const { isLoaded, users } = this.props;
 
     return (
       <UsersTableContainer>
+        <Actions onClick={this.onClick}>Create user</Actions>
         <TableFilter
           onClick={this.onFilterClick}
-          filterOptions={this.filterOptions}
-        />
+          filterOptions={this.filterOptions}>
+        </TableFilter>
         {isLoaded && this.renderUserCards(users)}
       </UsersTableContainer>
     );
   }
 }
 
-export default UsersTable;
+const mapStateToProps = () => ({});
+const mapDispatchToProps = dispatch => ({
+// const mapDispatchToProps = () => ({
+  createUser: () => {
+    console.log('create user');
+  },
+  createTest: (ids) => {
+    console.log('create test', ids);
+    // dispatch(createTest(ids));
+  },
+  openModal: () => dispatch(openModal(MODALS_NAMES_LIST.CREATE_USER))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersTable);
